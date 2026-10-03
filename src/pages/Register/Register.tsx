@@ -1,16 +1,17 @@
 import React from 'react'
+import { yupResolver } from '@hookform/resolvers/yup/src/index.js';
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import Input from 'src/components/Input/Input';
+import { schema, type Schema } from 'src/utils/rules';
 
-interface FormData {
-  email: string;
-  password: string;
-  confirm_password: string;
-}
+type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
+const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors }} = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }} = useForm<FormData>({
+    resolver: yupResolver(registerSchema)
+  });
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
