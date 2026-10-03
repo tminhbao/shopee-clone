@@ -1,7 +1,20 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
+interface FormData {
+  email: string;
+  password: string;
+  confirm_password: string;
+}
+
 const Register = () => {
+  const { register, handleSubmit, formState: { errors }} = useForm<FormData>();
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
     <div className='bg-orange'>
       {/* <Helmet>

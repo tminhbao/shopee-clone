@@ -1,12 +1,14 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
+  const { register, handleSubmit, formState: { errors }} = useForm();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // Handle form submission logic here
-  }
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
     <div className='bg-orange'>
       {/* <Helmet>
