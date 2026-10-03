@@ -1,14 +1,51 @@
+import { yupResolver } from '@hookform/resolvers/yup/src/yup.js';
+import { useMutation } from '@tanstack/react-query';
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, type ErrorResponse } from 'react-router-dom'
+import authApi from 'src/apis/auth.api';
 import Input from 'src/components/Input/Input';
+import { schema, type Schema } from 'src/utils/rules';
+import { isAxiosUnprocessableEntityError } from 'src/utils/utils';
+
+type FormData = Pick<Schema, 'email' | 'password'>
+const loginSchema = schema.pick(['email', 'password'])
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors }} = useForm();
+  const {
+    register,
+    setError,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormData>({
+    resolver: yupResolver(loginSchema)
+  })
 
+  const loginMutation = useMutation({
+    mutationFn: (body: Omit<FormData, 'confirm_password'>) => authApi.login(body)
+  })
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+    loginMutation.mutate(data, {
+      onSuccess: (data) => {
+        // setIsAuthenticated(true)
+        // setProfile(data.data.data.user)
+        // navigate('/')
+      },
+      onError: (error) => {
+        if (isAxiosUnprocessableEntityError<ErrorResponse<FormData>>(error)) {
+          const formError = error.response?.data.data
+          if (formError) {
+            Object.keys(formError).forEach((key) => {
+              setError(key as keyof FormData, {
+                message: formError[key as keyof FormData],
+                type: 'Server'
+              })
+            })
+          }
+        }
+      }
+    })
+  })
 
   return (
     <div className='bg-orange'>

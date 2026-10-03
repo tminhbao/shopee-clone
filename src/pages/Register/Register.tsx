@@ -8,12 +8,13 @@ import { useMutation } from '@tanstack/react-query';
 import authApi from 'src/apis/auth.api';
 import { omit } from 'lodash';
 import type { ErrorResponse } from 'src/types/utils.type';
+import { isAxiosUnprocessableEntityError } from 'src/utils/utils';
 
 type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
 
 const Register = () => {
-  const { register, handleSubmit, formState: { errors }} = useForm<FormData>({
+  const { register, handleSubmit, setError, formState: { errors }} = useForm<FormData>({
     resolver: yupResolver(registerSchema)
   });
 
@@ -30,31 +31,31 @@ const Register = () => {
         // setProfile(data.data.data.user)
         // navigate('/')
       },
-      // onError: (error) => {
-      //   if (isAxiosUnprocessableEntityError<ErrorResponse<Omit<FormData, 'confirm_password'>>>(error)) {
-      //     const formError = error.response?.data.data
-      //     if (formError) {
-      //       Object.keys(formError).forEach((key) => {
-      //         setError(key as keyof Omit<FormData, 'confirm_password'>, {
-      //           message: formError[key as keyof Omit<FormData, 'confirm_password'>],
-      //           type: 'Server'
-      //         })
-      //       })
-      //     }
-      //     // if (formError?.email) {
-      //     //   setError('email', {
-      //     //     message: formError.email,
-      //     //     type: 'Server'
-      //     //   })
-      //     // }
-      //     // if (formError?.password) {
-      //     //   setError('password', {
-      //     //     message: formError.password,
-      //     //     type: 'Server'
-      //     //   })
-      //     // }
-      //   }
-      // }
+      onError: (error) => {
+        if (isAxiosUnprocessableEntityError<ErrorResponse<Omit<FormData, 'confirm_password'>>>(error)) {
+          const formError = error.response?.data.data
+          if (formError) {
+            Object.keys(formError).forEach((key) => {
+              setError(key as keyof Omit<FormData, 'confirm_password'>, {
+                message: formError[key as keyof Omit<FormData, 'confirm_password'>],
+                type: 'Server'
+              })
+            })
+          }
+          if (formError?.email) {
+            setError('email', {
+              message: formError.email,
+              type: 'Server'
+            })
+          }
+          if (formError?.password) {
+            setError('password', {
+              message: formError.password,
+              type: 'Server'
+            })
+          }
+        }
+      }
     })
   })
 

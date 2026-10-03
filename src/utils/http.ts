@@ -1,7 +1,7 @@
 import axios, { AxiosError, type AxiosInstance } from 'axios'
 import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 import { toast } from 'react-toastify'
-import { AuthResponse, RefreshTokenReponse } from 'src/types/auth.type'
+import type { AuthResponse, RefreshTokenReponse } from 'src/types/auth.type'
 import {
   clearLS,
   getAccessTokenFromLS,
@@ -12,8 +12,8 @@ import {
 } from './auth'
 import config from 'src/constants/config'
 import { URL_LOGIN, URL_LOGOUT, URL_REFRESH_TOKEN, URL_REGISTER } from 'src/apis/auth.api'
+import type { ErrorResponse } from 'src/types/utils.type'
 import { isAxiosExpiredTokenError, isAxiosUnauthorizedError } from './utils'
-import { ErrorResponse } from 'src/types/utils.type'
 
 // Purchase: 1 - 3
 // Me: 2 - 5
