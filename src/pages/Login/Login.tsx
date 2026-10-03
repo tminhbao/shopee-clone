@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import Input from 'src/components/Input/Input';
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors }} = useForm();
@@ -20,7 +21,7 @@ const Login = () => {
           <div className='lg:col-span-2 lg:col-start-4'>
             <form className='rounded bg-white p-10 shadow-sm' onSubmit={onSubmit} noValidate>
               <div className='text-2xl'>Đăng nhập</div>
-              {/* <Input
+              <Input
                 name='email'
                 register={register}
                 type='email'
@@ -37,7 +38,7 @@ const Login = () => {
                 errorMessage={errors.password?.message}
                 placeholder='Password'
                 autoComplete='on'
-              /> */}
+              />
               <div className='mt-3'>
                 {/* <Button
                   type='submit'

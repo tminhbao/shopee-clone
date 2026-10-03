@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import Input from 'src/components/Input/Input';
 
 interface FormData {
   email: string;
@@ -26,7 +27,7 @@ const Register = () => {
           <div className='lg:col-span-2 lg:col-start-4'>
             <form className='rounded bg-white p-10 shadow-sm' onSubmit={onSubmit} noValidate>
               <div className='text-2xl'>Đăng ký</div>
-              {/* <Input
+              <Input
                 name='email'
                 register={register}
                 type='email'
@@ -54,7 +55,7 @@ const Register = () => {
                 errorMessage={errors.confirm_password?.message}
                 placeholder='Confirm Password'
                 autoComplete='on'
-              /> */}
+              />
 
               <div className='mt-2'>
                 {/* <Button
