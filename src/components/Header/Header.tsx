@@ -4,6 +4,7 @@ import NavHeader from '../NavHeader/NavHeader'
 import Popover from '../Popover/Popover'
 import { formatCurrency } from 'src/utils/utils'
 import { AppContext } from 'src/contexts/app.context'
+import path from 'src/constants/path'
 
 const Header = () => {
     const { isAuthenticated } = useContext(AppContext)
