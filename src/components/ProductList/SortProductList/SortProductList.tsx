@@ -1,7 +1,51 @@
+import classNames from 'classnames'
+import omit from 'lodash/omit'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { createSearchParams, Link, useNavigate } from 'react-router-dom'
+import path from 'src/constants/path'
+import { sortBy, order as orderConstant } from 'src/constants/product'
+import type { QueryConfig } from 'src/hooks/useQueryConfig'
+import type { ProductListConfig } from 'src/types/product.type'
 
-const SortProductList = () => {
+interface Props {
+  queryConfig: QueryConfig
+  pageSize: number
+}
+
+const SortProductList = ({ queryConfig, pageSize }: Props) => {
+  const page = Number(queryConfig.page)
+  const { sort_by = sortBy.createdAt, order } = queryConfig
+  const navigate = useNavigate()
+
+  const isActiveSortBy = (sortByValue: Exclude<ProductListConfig['sort_by'], undefined>) => {
+    return sort_by === sortByValue
+  }
+
+  const handleSort = (sortByValue: Exclude<ProductListConfig['sort_by'], undefined>) => {
+    navigate({
+      pathname: path.home,
+      search: createSearchParams(
+        omit(
+          {
+            ...queryConfig,
+            sort_by: sortByValue
+          },
+          ['order']
+        )
+      ).toString()
+    })
+  }
+
+  const handlePriceOrder = (orderValue: Exclude<ProductListConfig['order'], undefined>) => {
+    navigate({
+      pathname: path.home,
+      search: createSearchParams({
+        ...queryConfig,
+        sort_by: sortBy.price,
+        order: orderValue
+      }).toString()
+    })
+  }
   return (
     <div className='bg-gray-300/40 py-4 px-3'>
       <div className='flex flex-wrap items-center justify-between gap-2'>
