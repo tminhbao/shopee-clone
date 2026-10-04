@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ProductRating from 'src/components/ProductRating/ProductRating'
 import path from 'src/constants/path'
 import { formatCurrency, formatNumberToSocialStyle, generateNameId } from 'src/utils/utils'
 

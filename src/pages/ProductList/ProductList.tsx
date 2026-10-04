@@ -1,8 +1,24 @@
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import productApi from 'src/apis/product.api'
 import AsideFilter from 'src/components/ProductList/AsideFilter/AsideFilter'
+import Product from 'src/components/ProductList/Product/Product'
 import SortProductList from 'src/components/ProductList/SortProductList/SortProductList'
+import useQueryConfig from 'src/hooks/useQueryConfig'
+import type { ProductListConfig } from 'src/types/product.type'
 
 const ProductList = () => {
+  const queryConfig = useQueryConfig()
+
+  const { data: productsData } = useQuery({
+    queryKey: ['products', queryConfig],
+    queryFn: () => {
+      return productApi.getProducts(queryConfig as ProductListConfig)
+    },
+    // keepPreviousData: true,
+    staleTime: 3 * 60 * 1000
+  })
+  
   return (
     <div className='bg-gray-200 py-6'>
       <Helmet>
