@@ -7,11 +7,12 @@ import classNames from 'classnames'
 import type { QueryConfig } from 'src/hooks/useQueryConfig'
 import type { NoUndefinedField } from 'src/types/utils.type'
 import { schema, type Schema } from 'src/utils/rules'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import type { ObjectSchema } from 'yup'
 import omit from 'lodash/omit'
 import type { Category } from 'src/types/category.type'
+import InputNumber from 'src/components/InputNumber/InputNumber'
 
 interface Props {
   queryConfig: QueryConfig
@@ -23,7 +24,7 @@ type FormData = NoUndefinedField<Pick<Schema, 'price_max' | 'price_min'>>
 const priceSchema = schema.pick(['price_min', 'price_max'])
 
 const AsideFilter = ({ queryConfig, categories }: Props) => {
-  const { t } = useTranslation('home')
+  // const { t } = useTranslation('home')
   const { category } = queryConfig
   const {
     control,
