@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import categoryApi from 'src/apis/category.api'
 import productApi from 'src/apis/product.api'
 import AsideFilter from 'src/components/ProductList/AsideFilter/AsideFilter'
 import Product from 'src/components/ProductList/Product/Product'
@@ -17,6 +18,13 @@ const ProductList = () => {
     },
     // keepPreviousData: true,
     staleTime: 3 * 60 * 1000
+  })
+
+  const { data: categoriesData } = useQuery({
+    queryKey: ['categories'],
+    queryFn: () => {
+      return categoryApi.getCategories()
+    }
   })
   
   return (

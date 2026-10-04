@@ -2,9 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ProductRating from 'src/components/ProductRating/ProductRating'
 import path from 'src/constants/path'
+import type { Product as ProductType } from 'src/types/product.type'
 import { formatCurrency, formatNumberToSocialStyle, generateNameId } from 'src/utils/utils'
 
-const Product = () => {
+interface Props {
+  product: ProductType
+}
+
+const Product = ({ product }: Props) => {
   return (
     <Link to={`${path.home}${generateNameId({ name: product.name, id: product._id })}`}>
       <div className='overflow-hidden rounded-sm bg-white shadow transition-transform duration-100 hover:translate-y-[-0.04rem] hover:shadow-md'>
