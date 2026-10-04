@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import NavHeader from '../NavHeader/NavHeader'
+import Popover from '../Popover/Popover'
+import { formatCurrency } from 'src/utils/utils'
 
 const Header = () => {
   return (

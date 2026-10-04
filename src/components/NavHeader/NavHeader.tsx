@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { getAvatarUrl } from 'src/utils/utils'
+import Popover from '../Popover/Popover'
 
 const NavHeader = () => {
   return (
