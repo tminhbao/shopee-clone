@@ -1,6 +1,24 @@
 import React from 'react'
+import { createSearchParams, useNavigate } from 'react-router-dom'
+import path from 'src/constants/path'
+import type { QueryConfig } from 'src/hooks/useQueryConfig'
 
-const RatingStars = () => {
+interface Props {
+  queryConfig: QueryConfig
+}
+
+const RatingStars = ({ queryConfig }: Props) => {
+  const navigate = useNavigate()
+
+  const handleFilterStar = (ratingFilter: number) => {
+    navigate({
+      pathname: path.home,
+      search: createSearchParams({
+        ...queryConfig,
+        rating_filter: String(ratingFilter)
+      }).toString()
+    })
+  }
   return (
     <ul className='my-3'>
       {Array(5)
