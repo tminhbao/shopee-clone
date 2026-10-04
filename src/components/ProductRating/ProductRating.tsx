@@ -1,6 +1,21 @@
 import React from 'react'
 
-const ProductRating = () => {
+interface Props {
+    rating: number
+    activeClassname?: string
+    nonActiveClassname?: string
+}
+
+const ProductRating = ({ rating, activeClassname = 'h-3 w-3 fill-yellow-300 text-yellow-300', nonActiveClassname = 'h-3 w-3 fill-current text-gray-300' }: Props) => {
+    const handleWidth = (order: number) => {
+        if (order <= rating) {
+        return '100%'
+        }
+        if (order > rating && order - rating < 1) {
+        return (rating - Math.floor(rating)) * 100 + '%'
+        }
+        return '0%'
+    }
   return (
     <div className='flex items-center'>
       {Array(5)
