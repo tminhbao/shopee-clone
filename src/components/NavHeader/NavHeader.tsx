@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { getAvatarUrl } from 'src/utils/utils'
 import Popover from '../Popover/Popover'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import authApi from 'src/apis/auth.api'
+import { AppContext } from 'src/contexts/app.context'
 
 const NavHeader = () => {
+
+    const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
+    const queryClient = useQueryClient()
+    
+    const logoutMutation = useMutation({
+        mutationFn: authApi.logout,
+        onSuccess: () => {
+            console.log(111)
+            setIsAuthenticated(false)
+            setProfile(null)
+            queryClient.removeQueries({ queryKey: ['purchases', { status: purchasesStatus.inCart }] })
+        }
+    })
+
+    const handleLogout = () => {
+        logoutMutation.mutate()
+    }
   return (
     <div className='flex justify-end'>
       <Popover

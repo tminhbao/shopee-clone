@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import NavHeader from '../NavHeader/NavHeader'
 import Popover from '../Popover/Popover'
 import { formatCurrency } from 'src/utils/utils'
+import { AppContext } from 'src/contexts/app.context'
 
 const Header = () => {
+    const { isAuthenticated } = useContext(AppContext)
   return (
     <div className='bg-[linear-gradient(-180deg,#f53d2d,#f63)] pb-5 pt-2 text-white'>
       <div className='container'>
