@@ -10,6 +10,7 @@ import { omit } from 'lodash';
 import type { ErrorResponse } from 'src/types/utils.type';
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils';
 import { AppContext } from 'src/contexts/app.context';
+import Button from 'src/components/Button/Button';
 
 type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
@@ -103,13 +104,13 @@ const Register = () => {
               />
 
               <div className='mt-2'>
-                {/* <Button
+                <Button
                   className='flex w-full items-center justify-center bg-red-500 py-4 px-2 text-sm uppercase text-white hover:bg-red-600'
                   isLoading={registerAccountMutation.isPending}
                   disabled={registerAccountMutation.isPending}
                 >
                   Đăng ký
-                </Button> */}
+                </Button>
               </div>
               <div className='mt-8 flex items-center justify-center'>
                 <span className='text-gray-400'>Bạn đã có tài khoản?</span>

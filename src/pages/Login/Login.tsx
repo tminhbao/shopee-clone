@@ -9,6 +9,7 @@ import { schema, type Schema } from 'src/utils/rules';
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils';
 import type { ErrorResponse } from 'src/types/utils.type';
 import { AppContext } from 'src/contexts/app.context';
+import Button from 'src/components/Button/Button';
 
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
@@ -81,14 +82,14 @@ const Login = () => {
                 autoComplete='on'
               />
               <div className='mt-3'>
-                {/* <Button
+                <Button
                   type='submit'
                   className='flex  w-full items-center justify-center bg-red-500 py-4 px-2 text-sm uppercase text-white hover:bg-red-600'
                   isLoading={loginMutation.isPending}
                   disabled={loginMutation.isPending}
                 >
                   Đăng nhập
-                </Button> */}
+                </Button>
               </div>
               <div className='mt-8 flex items-center justify-center'>
                 <span className='text-gray-400'>Bạn chưa có tài khoản?</span>
