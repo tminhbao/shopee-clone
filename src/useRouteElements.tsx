@@ -12,7 +12,7 @@ import RegisterLayout from './layouts/RegisterLayout/RegisterLayout'
 // import ProductDetail from './pages/ProductDetail'
 // import Cart from './pages/Cart'
 import CartLayout from './layouts/CartLayout/CartLayout'
-import UserLayout from './pages/User/layouts/UserLayout'
+import UserLayout from './layouts/UserLayout/UserLayout'
 // import ChangePassword from './pages/User/pages/ChangePassword'
 // import HistoryPurchase from './pages/User/pages/HistoryPurchase'
 // import NotFound from './pages/NotFound'
@@ -23,9 +23,9 @@ const Profile = lazy(() => import('./pages/Profile/Profile'))
 const Register = lazy(() => import('./pages/Register/Register'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail/ProductDetail'))
 const Cart = lazy(() => import('./pages/Cart/Cart'))
-const ChangePassword = lazy(() => import('./pages/User/pages/ChangePassword'))
-const HistoryPurchase = lazy(() => import('./pages/User/pages/HistoryPurchase'))
-const NotFound = lazy(() => import('./pages/NotFound'))
+const ChangePassword = lazy(() => import('./pages/ChangePassword/ChangePassword'))
+const HistoryPurchase = lazy(() => import('./pages/HistoryPurchase/HistoryPurchase'))
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'))
 
 /**
  * Để tối ưu re-render thì nên ưu tiên dùng <Outlet /> thay cho {children}
