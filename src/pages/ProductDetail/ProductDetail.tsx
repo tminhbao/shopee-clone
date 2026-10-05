@@ -10,6 +10,8 @@ import ProductRating from 'src/components/ProductRating/ProductRating'
 import path from 'src/constants/path'
 import type { ProductListConfig, Product as ProductType } from 'src/types/product.type'
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from 'src/utils/utils'
+import DOMPurify from 'dompurify'
+import QuantityController from 'src/components/QuantityController/QuantityController'
 
 const ProductDetail = () => {
   const { t } = useTranslation(['product'])

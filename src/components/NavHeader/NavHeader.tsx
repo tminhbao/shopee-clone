@@ -6,25 +6,26 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import authApi from 'src/apis/auth.api'
 import { AppContext } from 'src/contexts/app.context'
 import path from 'src/constants/path'
+import { purchasesStatus } from 'src/constants/purchase'
 
 const NavHeader = () => {
 
-    const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
-    const queryClient = useQueryClient()
-    
-    const logoutMutation = useMutation({
-        mutationFn: authApi.logout,
-        onSuccess: () => {
-            console.log(111)
-            setIsAuthenticated(false)
-            setProfile(null)
-            queryClient.removeQueries({ queryKey: ['purchases', { status: purchasesStatus.inCart }] })
-        }
-    })
+  const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
+  const queryClient = useQueryClient()
+  
+  const logoutMutation = useMutation({
+      mutationFn: authApi.logout,
+      onSuccess: () => {
+          console.log(111)
+          setIsAuthenticated(false)
+          setProfile(null)
+          queryClient.removeQueries({ queryKey: ['purchases', { status: purchasesStatus.inCart }] })
+      }
+  })
 
-    const handleLogout = () => {
-        logoutMutation.mutate()
-    }
+  const handleLogout = () => {
+      logoutMutation.mutate()
+  }
   return (
     <div className='flex justify-end'>
       <Popover

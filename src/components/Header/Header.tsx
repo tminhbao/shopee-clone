@@ -5,9 +5,24 @@ import Popover from '../Popover/Popover'
 import { formatCurrency } from 'src/utils/utils'
 import { AppContext } from 'src/contexts/app.context'
 import path from 'src/constants/path'
+import useSearchProducts from 'src/hooks/useSearchProducts'
+import { useQuery } from '@tanstack/react-query'
+import { purchasesStatus } from 'src/constants/purchase'
+import purchaseApi from 'src/apis/purchase.api'
 
+const MAX_PURCHASES = 5
 const Header = () => {
-    const { isAuthenticated } = useContext(AppContext)
+  const { isAuthenticated } = useContext(AppContext)
+  const { onSubmitSearch, register } = useSearchProducts()
+
+  const { data: purchasesInCartData } = useQuery({
+    queryKey: ['purchases', { status: purchasesStatus.inCart }],
+    queryFn: () => purchaseApi.getPurchases({ status: purchasesStatus.inCart }),
+    enabled: isAuthenticated
+  })
+
+  const purchasesInCart = purchasesInCartData?.data.data
+  
   return (
     <div className='bg-[linear-gradient(-180deg,#f53d2d,#f63)] pb-5 pt-2 text-white'>
       <div className='container'>
