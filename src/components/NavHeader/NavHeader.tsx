@@ -9,6 +9,8 @@ import path from 'src/constants/path'
 import { purchasesStatus } from 'src/constants/purchase'
 
 const NavHeader = () => {
+  const { i18n } = useTranslation()
+  const currentLanguage = locales[i18n.language as keyof typeof locales]
 
   const { setIsAuthenticated, isAuthenticated, setProfile, profile } = useContext(AppContext)
   const queryClient = useQueryClient()
@@ -26,6 +28,11 @@ const NavHeader = () => {
   const handleLogout = () => {
       logoutMutation.mutate()
   }
+
+  const changeLanguage = (lng: 'en' | 'vi') => {
+    i18n.changeLanguage(lng)
+  }
+  
   return (
     <div className='flex justify-end'>
       <Popover

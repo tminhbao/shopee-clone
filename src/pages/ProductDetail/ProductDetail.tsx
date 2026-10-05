@@ -12,6 +12,7 @@ import type { ProductListConfig, Product as ProductType } from 'src/types/produc
 import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } from 'src/utils/utils'
 import DOMPurify from 'dompurify'
 import QuantityController from 'src/components/QuantityController/QuantityController'
+import { purchasesStatus } from 'src/constants/purchase'
 
 const ProductDetail = () => {
   const { t } = useTranslation(['product'])

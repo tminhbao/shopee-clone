@@ -9,6 +9,7 @@ import useSearchProducts from 'src/hooks/useSearchProducts'
 import { useQuery } from '@tanstack/react-query'
 import { purchasesStatus } from 'src/constants/purchase'
 import purchaseApi from 'src/apis/purchase.api'
+import noproduct from 'src/assets/img/no-product.png'
 
 const MAX_PURCHASES = 5
 const Header = () => {
