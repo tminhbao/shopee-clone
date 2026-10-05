@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import path from 'src/constants/path'
 import { useContext, lazy, Suspense } from 'react'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
@@ -10,7 +11,7 @@ import RegisterLayout from './layouts/RegisterLayout/RegisterLayout'
 // import Register from './pages/Register'
 // import ProductDetail from './pages/ProductDetail'
 // import Cart from './pages/Cart'
-import CartLayout from './layouts/CartLayout'
+import CartLayout from './layouts/CartLayout/CartLayout'
 import UserLayout from './pages/User/layouts/UserLayout'
 // import ChangePassword from './pages/User/pages/ChangePassword'
 // import HistoryPurchase from './pages/User/pages/HistoryPurchase'
