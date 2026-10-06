@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { yupResolver } from '@hookform/resolvers/yup/src/yup.js';
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'

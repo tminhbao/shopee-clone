@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { yupResolver } from '@hookform/resolvers/yup/src/index.js';
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import Input from 'src/components/Input/Input';
