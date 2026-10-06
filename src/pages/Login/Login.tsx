@@ -10,6 +10,7 @@ import { isAxiosUnprocessableEntityError } from 'src/utils/utils';
 import type { ErrorResponse } from 'src/types/utils.type';
 import { AppContext } from 'src/contexts/app.context';
 import Button from 'src/components/Button/Button';
+import { Helmet } from 'react-helmet-async';
 
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
@@ -55,7 +56,7 @@ const Login = () => {
   return (
     <div className='bg-orange'>
       <Helmet>
-        <title>Đăng nhập | Shopee Clone</title>
+        <title>Đăng nhập | Shopee</title>
         <meta name='description' content='Đăng nhập vào dự án Shopee Clone' />
       </Helmet>
       <div className='container'>

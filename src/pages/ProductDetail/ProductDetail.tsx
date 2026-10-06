@@ -14,6 +14,8 @@ import DOMPurify from 'dompurify'
 import QuantityController from 'src/components/QuantityController/QuantityController'
 import { purchasesStatus } from 'src/constants/purchase'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
+import { convert } from 'html-to-text'
 
 const ProductDetail = () => {
   const { t } = useTranslation(['product'])
@@ -124,7 +126,7 @@ const ProductDetail = () => {
   return (
     <div className='bg-gray-200 py-6'>
       <Helmet>
-        <title>{product.name} | Shopee Clone</title>
+        <title>{product.name} | Shopee</title>
         <meta
           name='description'
           content={convert(product.description, {
