@@ -4,6 +4,7 @@ import useRouteElements from './useRouteElements'
 import { useContext, useEffect } from 'react'
 import { AppContext } from './contexts/app.context'
 import { LocalStorageEventTarget } from './utils/auth'
+import ErrorBoundary from './pages/ErrorBoundary/ErrorBoundary'
 
 function App() {
   const routeElements = useRouteElements()
@@ -17,8 +18,10 @@ function App() {
 
   return (
     <>
-      {routeElements}
-      <ToastContainer />
+      <ErrorBoundary>
+        {routeElements}
+        <ToastContainer />
+      </ErrorBoundary>
     </>
   )
 }
