@@ -1,4 +1,3 @@
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import type { ErrorResponse, NoUndefinedField } from 'src/types/utils.type'
 import { userSchema, type UserSchema } from 'src/utils/rules'

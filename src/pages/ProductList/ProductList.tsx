@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import categoryApi from 'src/apis/category.api'
 import productApi from 'src/apis/product.api'

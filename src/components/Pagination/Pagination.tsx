@@ -1,4 +1,3 @@
-import React from 'react'
 import { createSearchParams, Link } from 'react-router-dom'
 import path from 'src/constants/path'
 import type { QueryConfig } from 'src/hooks/useQueryConfig'

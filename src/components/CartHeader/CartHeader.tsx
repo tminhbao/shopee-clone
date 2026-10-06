@@ -1,4 +1,3 @@
-import React from 'react'
 import useSearchProducts from 'src/hooks/useSearchProducts'
 import NavHeader from '../NavHeader/NavHeader'
 import { Link } from 'react-router-dom'

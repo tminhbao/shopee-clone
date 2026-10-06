@@ -1,16 +1,12 @@
-import React from 'react'
+import { Outlet } from 'react-router-dom'
 import Footer from 'src/components/Footer/Footer'
 import RegisterHeader from 'src/components/RegisterHeader/RegisterHeader'
 
-interface Props {
-    children?: React.ReactNode
-}
-
-const RegisterLayout = ({ children }: Props) => {
+const RegisterLayout = () => {
     return (
         <div>
             <RegisterHeader />
-                {children}
+            <Outlet />
             <Footer />
         </div>
     )

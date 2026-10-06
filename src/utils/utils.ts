@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios'
 import config from 'src/constants/config'
-import userImage from 'src/assets/images/user.svg'
+import userImage from 'src/assets/img/user.svg'
 import type { ErrorResponse } from 'src/types/utils.type'
 import HttpStatusCode from 'src/constants/httpStatusCode.enum'
 
