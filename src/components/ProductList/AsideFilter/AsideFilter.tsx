@@ -13,6 +13,7 @@ import type { ObjectSchema } from 'yup'
 import omit from 'lodash/omit'
 import type { Category } from 'src/types/category.type'
 import InputNumber from 'src/components/InputNumber/InputNumber'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   queryConfig: QueryConfig

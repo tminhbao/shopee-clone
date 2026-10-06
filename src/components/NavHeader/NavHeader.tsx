@@ -7,6 +7,8 @@ import authApi from 'src/apis/auth.api'
 import { AppContext } from 'src/contexts/app.context'
 import path from 'src/constants/path'
 import { purchasesStatus } from 'src/constants/purchase'
+import { useTranslation } from 'react-i18next'
+import { locales } from 'src/i18n/i18n'
 
 const NavHeader = () => {
   const { i18n } = useTranslation()

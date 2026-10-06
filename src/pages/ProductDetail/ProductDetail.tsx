@@ -13,6 +13,7 @@ import { formatCurrency, formatNumberToSocialStyle, getIdFromNameId, rateSale } 
 import DOMPurify from 'dompurify'
 import QuantityController from 'src/components/QuantityController/QuantityController'
 import { purchasesStatus } from 'src/constants/purchase'
+import { useTranslation } from 'react-i18next'
 
 const ProductDetail = () => {
   const { t } = useTranslation(['product'])
